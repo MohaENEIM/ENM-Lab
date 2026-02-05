@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENM-Lab – 3D Rendering</title>
+    <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=satoshi@300,400,500,600,700,800&display=swap">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./includes/templates.js" defer></script>
+    <link rel="icon" href="ressources/ENM Logo.png" type="image/png">
+</head>
+<body>
+
+    <site-header></site-header>
+
+    <main>
+
+        <!-- Hero (déjà existante) -->
+        <section id="accueil" class="hero">
+            <video class="hero-video" autoplay loop muted playsinline aria-hidden="true">
+                <source src="./ressources/video1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-title">
+                    <img src="./ressources/ENM Lab.png" alt="ENM-Lab" class="hero-logo-title">
+                </div>
+                <p class="hero-subtitle">Réalisations de rendu 3D sur mesure</p>
+            </div>
+        </section>
+
+        <!-- Qui sommes-nous -->
+        <section id="qui-sommes-nous" class="section-qui">
+            <div class="content-wrapper">
+                <h2>Qui sommes-nous ?</h2>
+                <p>ENM-Lab est une boîte indépendante spécialisée dans la réalisation de <strong>rendus d'architecture 3D</strong> de très haute qualité. Nous travaillons aussi bien sur des structures existantes (rénovation, mise en valeur patrimoniale, audits visuels) que sur des projets à venir (concours, permis de construire, présentations commerciales, études d'impact visuel).</p>
+                
+                <p>Au-delà de l'architecture, nous produisons également d'autres types de rendus 3D : produits industriels, objets design, visualisations scientifiques, environnements virtuels, animations 3D, vues techniques illustrées… tout ce qui nécessite une représentation réaliste et impactante en 3 dimensions.</p>
+
+                <div class="valeurs-grid">
+                    <div class="valeur">
+                        <!--https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800-->
+                        <img src="./ressources/Image3.png" alt="Réalisme" class="valeur-icon">
+                        <h3>Réalisme photoréaliste</h3>
+                        <p>Matériaux, éclairages et atmosphères travaillés avec soin</p>
+                    </div>
+                    <div class="valeur">
+                        <img src="./ressources/independant.jpg" alt="Indépendant" class="valeur-icon">
+                        <h3>Indépendance totale</h3>
+                        <p>Aucune affiliation, pour une liberté créative maximale</p>
+                    </div>
+                    <div class="valeur">
+                        <img src="./ressources/handshake2.jpg" alt="Réactivité" class="valeur-icon">
+                        <h3>Réactivité & proximité</h3>
+                        <p>Échanges directs et délais courts, même pour les projets urgents</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="modeOp.html" class="cta-button secondary">Notre approche</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Domaines d'intervention -->
+        <section id="domaines" class="section-domaines">
+            <div class="content-wrapper">
+                <h2>Nos domaines d’expertise</h2>
+                <p>ENM-Lab maîtrise l’ensemble du pipeline de création de rendus 3D photoréalistes et de visualisations de haute qualité.</p>
+
+                <div class="domaines-grid">
+                    <div class="domaine-card">
+                        <h3>Rendus architecturaux photoréalistes</h3>
+                        <p>Extérieurs & intérieurs de bâtiments existants ou en projet – concurrence, permis de construire, valorisation patrimoniale, études d’impact visuel</p>
+                    </div>
+                    <div class="domaine-card">
+                        <h3>Visualisation de projets urbains & paysagers</h3>
+                        <p>Aménagements urbains, ZAC, lotissements, parcs, insertions paysagères, simulations jour/nuit et saisons</p>
+                    </div>
+                    <div class="domaine-card">
+                        <h3>Rendus de produits & design industriel</h3>
+                        <p>Objets, mobilier, packaging, appareils techniques, prototypes – vues marketing, configurateurs 3D, packshots</p>
+                    </div>
+                    <div class="domaine-card">
+                        <h3>Animations & vues dynamiques 3D</h3>
+                        <p>Walkthroughs, fly-throughs, cinématiques, time-lapse de chantier, animations explicatives, vidéos promotionnelles</p>
+                    </div>
+                    <!--<div class="domaine-card">
+                        <h3>Visualisations scientifiques & techniques</h3>
+                        <p>Schémas 3D annotés, coupes explosives, simulations physiques, rendus médicaux, mécanique, énergie</p>
+                    </div>
+                    <div class="domaine-card">
+                        <h3>Environnements virtuels & VR/AR</h3>
+                        <p>Modélisation d’espaces immersifs, visites virtuelles, maquettes numériques interactives, exports pour casque VR/AR</p>
+                    </div>-->
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="realisation.html" class="cta-button secondary">Voir nos projets réalisés</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action final -->
+        <section class="section-cta" id="form-cta">
+            <div class="content-wrapper">
+                <h2>Vous avez un projet technique ambitieux ?</h2>
+                <p>Discutons-en. Nous transformons vos idées en réalité tangible.</p>
+                <!--<a href="realisation.html" class="cta-button">Découvrir nos réalisations</a>
+                <button id="toggle-contact" class="cta-button secondary">Nous contacter</button>-->
+            </div>
+
+            <!-- Formulaire de contact (initialement caché) -->
+            <form id="contact-form" class="contact-form">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="cta-button secondary">Envoyer</button>
+            </form>
+        </section>
+
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="./scripts/script.js"></script>
+</body>
+</html>

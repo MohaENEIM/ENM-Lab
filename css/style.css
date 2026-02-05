@@ -1,0 +1,633 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --accent: #ff004c;
+    --accent-hover: #ff2259;
+    --border: #d2d2d7;
+    --card-bg: #f5f5f7;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-inset: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #000000;
+    --bg-secondary: #1c1c1e;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --accent: #ff004c;
+    --accent-hover: #ff2259;
+    --border: #3a3a3c;
+    --card-bg: #1c1c1e;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-inset: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.4s, color 0.4s;
+    line-height: 1.6;
+    font-weight: 400;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo, .nav-links a, .cta-button, button[type="submit"], footer {
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: clamp(3.8rem, 9vw, 6.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+}
+
+.domaines h2, .services h2, .contact h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.cta-button,
+button[type="submit"] {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 12px;               /* Moins pill, plus carré moderne */
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); /* Transition plus bouncy */
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet glow pour tous les boutons principaux */
+.cta-button:hover,
+button[type="submit"]:hover {
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08), /* ombre normale */
+        0 0 12px var(--accent),          /* glow */
+        0 0 24px var(--accent);          /* glow plus étendu */
+    transform: translateY(-2px) scale(1.03); /* léger effet de levée */
+}
+
+[data-theme="dark"] .cta-button:hover,
+[data-theme="dark"] button[type="submit"]:hover {
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.5),
+        0 0 16px var(--accent),
+        0 0 32px var(--accent);
+}
+
+.cta-button:active,
+button[type="submit"]:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--shadow-inset);   /* Effet pressed / enfoncé */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s;
+}
+
+[data-theme="dark"] header {
+    background: rgba(0, 0, 0, 0.72);
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: block;                    /* Pour que l'<a> se comporte bien */
+    height: 40px;                      /* Hauteur du logo dans la navbar – ajuste selon ton image */
+    line-height: 0;                    /* Évite les décalages verticaux */
+}
+
+.logo-img {
+    height: 100%;                      /* Remplit la hauteur définie */
+    width: auto;                       /* Garde les proportions */
+    display: block;
+    transition: transform 0.3s ease;   /* Petit effet au hover si tu veux */
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);            /* Optionnel : léger zoom au survol */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+}
+
+#theme-toggle:hover {
+    background: rgba(0,0,0,0.08);
+    color: var(--accent);
+}
+
+[data-theme="dark"] #theme-toggle:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--accent);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+    line-height: 0;
+}
+
+.hero-logo-title {
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.hero-content:hover .hero-logo-title {
+    transform: scale(1.03);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 2rem;
+    opacity: 0.9;
+}
+
+.cta-button.large {
+    padding: 18px 48px;
+    font-size: 1.3rem;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    margin-left: 24px;
+}
+
+.cta-button.secondary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.domaines {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.domaines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.domaine-card {
+    background: #f5f5f7;
+    padding: 20px;
+    border-radius: 18px;
+    transition: transform 0.3s;
+}
+
+.domaine-card:hover {
+    transform: scale(1.05);
+}
+
+.domaine-card img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+footer {
+    background: var(--bg-secondary);
+    padding: 40px 24px 30px;           /* Réduit : haut 40px, bas 30px */
+    text-align: center;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;                 /* Légèrement plus petit pour compacter */
+}
+
+footer p {
+    margin-bottom: 12px;               /* Moins d'espace sous le copyright */
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;                         /* Réduit le gap entre liens */
+    margin-top: 8px;                   /* Moins d'espace au-dessus des liens */
+}
+
+footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.9rem;
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 3.4rem;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+    .hero-logo-title {
+        max-height: 100px;
+        max-width: 85%;
+    }
+
+    section {
+        padding: 100px 20px;
+    }
+    
+    .project, .project.reverse {
+        display: flex !important;              /* <-- important */
+        flex-direction: column;     /* texte en haut, carousel en dessous */
+        gap: 40px;
+        padding: 60px 16px;
+        align-items: stretch;
+    }
+
+    .project.reverse .project-info,
+    .project.reverse .carousel-container {
+        order: unset !important; /* redevient normal sur mobile */
+    }
+}
+
+/*@media (max-width: 900px) {
+}*/
+
+/* Animation apparition */
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ────────────────────────────────
+   Page d'accueil – sections
+──────────────────────────────── */
+
+.section-qui, .section-domaines, .section-cta {
+    padding: 120px 24px;
+    background: var(--bg-primary);
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.valeurs-grid, .domaines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.valeur, .domaine-card {
+    background: var(--card-bg);
+    /*padding: 32px;*/
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.valeur img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.valeur:hover, .domaine-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+}
+
+.valeur h3, .domaine-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.section-qui h2, .section-domaines h2 {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-qui p, .section-domaines > .content-wrapper > p {
+    font-size: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.section-qui strong {
+    color: var(--accent);
+}
+
+.section-cta {
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.section-cta h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.section-cta p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.section-cta .cta-button {
+    margin: 0 12px;
+}
+
+/* ────────────────────────────────
+   Réalisations / Portfolio
+──────────────────────────────── */
+
+.portfolio-hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent 70%);
+    
+    background-image: url("../ressources/Image3.png");
+    background-size: cover;
+    background-position: 50% 70%;
+    height: 500px; /* ajuste selon ton design */
+}
+
+.portfolio-hero h1 {
+    font-size: 4.2rem;
+    margin-bottom: 1rem;
+    text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+    color: #ffffff;
+}
+
+.portfolio-hero p {
+    text-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    color: #ffffff;
+}
+
+.modeOp-hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent 70%);
+    
+    background-image: url("../ressources/Banniere3.jpg");
+    background-size: cover;
+    background-position: 50% 70%;
+    height: 500px; /* ajuste selon ton design */
+}
+
+.modeOp-hero h1 {
+    font-size: 4.2rem;
+    margin-bottom: 1rem;
+    text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+    color: #ffffff;
+}
+
+.modeOp-hero p {
+    text-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    color: #ffffff;
+}
+
+.portfolio {
+    padding: 60px 24px;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 100px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.project.reverse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+/* Inverser juste le contenu texte / carousel */
+.project.reverse .project-info {
+    order: 2;  /* texte à droite */
+}
+.project.reverse .carousel-container {
+    order: 1;  /* carrousel à gauche */
+}
+
+/*.project-info {
+    direction: ltr;
+}*/
+
+.project h2 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+
+.date {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5rem;
+    list-style: none; /* ← supprime les puces */
+    padding-left: 0;  /* ← évite le padding par défaut du ul */
+}
+
+.tags li {
+    background: var(--accent);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+}
